@@ -1,23 +1,32 @@
-
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Inicio from './pantallas/Inicio';
-import Perfil_Victor from './pantallas/perfil_victor';
-import Perfil_Javier from './pantallas/perfil_javier';
+import { StyleSheet, View, ImageBackground } from 'react-native';
+import PantallaPrincipal from './components/PantallaPrincipal';
 
-const Stack = createNativeStackNavigator();
-
-function App() {
+const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Hogar" component={Inicio} />
-        <Stack.Screen name="Perfil Victor" component={Perfil_Victor} />
-        <Stack.Screen name="Perfil Javier" component={Perfil_Javier} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ImageBackground
+      source={require('./imagenes/fondo.png')} // Ruta de la imagen de fondo
+      style={styles.background}
+    >
+      <View style={styles.container}>
+        <PantallaPrincipal />
+      </View>
+    </ImageBackground>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default App;
